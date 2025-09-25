@@ -9,12 +9,7 @@ function generateFakeAddress() {
 }
 
 export default function Navbar() {
-  const [dark, setDark] = useState(() => {
-    const stored = localStorage.getItem('theme')
-    if (stored === 'dark') return true
-    if (stored === 'light') return false
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-  })
+  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'))
   const [connected, setConnected] = useState(false)
   const [address, setAddress] = useState('')
 

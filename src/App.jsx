@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar'
+import VotingPanel from './components/VotingPanel'
 import './index.css'
 
 export default function App() {
@@ -7,8 +8,8 @@ export default function App() {
       <Navbar />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-10">
         <section className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-6 shadow-sm">
-          <h2 className="text-lg font-semibold mb-4">Voting Panel</h2>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">Under construction…</p>
+          <h2 className="text-lg font-semibold mb-6">Voting Panel</h2>
+          <VotingPanel />
         </section>
         <section className="grid gap-6 md:grid-cols-2">
           <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-5">
