@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Sun, Moon, Wallet } from 'lucide-react'
+import { Sun, Moon, Wallet, Power } from 'lucide-react'
+import { useBlockchain } from '../context/BlockchainContext'
 
 function generateFakeAddress() {
   const chars = 'abcdef0123456789'
@@ -9,9 +10,10 @@ function generateFakeAddress() {
 }
 
 export default function Navbar() {
+  const { wallet, connectWallet, disconnectWallet, sessionActive, endSession, resetSession } = useBlockchain()
   const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'))
-  const [connected, setConnected] = useState(false)
-  const [address, setAddress] = useState('')
+  const connected = !!wallet
+  const address = wallet?.address || ''
 
   useEffect(() => {
     const root = document.documentElement
@@ -26,8 +28,8 @@ export default function Navbar() {
 
   const toggleTheme = () => setDark(d => !d)
   const handleConnect = () => {
-    if (connected) { setConnected(false); setAddress('') }
-    else { setConnected(true); setAddress(generateFakeAddress()) }
+    if (connected) disconnectWallet()
+    else connectWallet()
   }
 
   return (
@@ -47,6 +49,11 @@ export default function Navbar() {
             <Wallet className="h-4 w-4" />
             {connected ? <span className="font-mono">{address.slice(0,6)}…{address.slice(-4)}</span> : <span>Connect Wallet</span>}
           </button>
+          {connected && (
+            <button onClick={sessionActive ? endSession : resetSession} className={`inline-flex items-center gap-1 rounded-lg border text-xs font-medium px-3 h-10 shadow-sm transition-all focus:outline-none border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:border-red-400/60 hover:bg-red-50 dark:hover:bg-red-900/30 ${!sessionActive ? 'border-emerald-400/40 hover:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30' : ''}`}> 
+              <Power className="h-4 w-4" /> {sessionActive ? 'End Session' : 'Restart'}
+            </button>
+          )}
         </div>
       </div>
     </nav>
