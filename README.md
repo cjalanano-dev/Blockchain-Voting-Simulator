@@ -14,11 +14,10 @@
 8. State Persistence & Session Lifecycle
 9. Wallet Simulation
 10. Export Format
-11. Theming & UI/UX Notes
-12. Extending the Simulator
-13. Security Notes
-14. Educational Use Disclaimer
-15. License
+11. Extending the Simulator
+12. Security Notes
+13. Educational Use Disclaimer
+14. License
 
 ---
 
@@ -38,7 +37,7 @@ This project is an educational front‑end simulation of how a blockchain *could
 - Persistent state (localStorage): chain, pending votes, candidates, wallet, session
 - JSON export of full ledger snapshot + tally
 - Micro‑interactions & animations (Framer Motion)
-- Dark / light theme with no‑flash hydration script
+<!-- Dark mode removed (previous implementation deprecated) -->
 
 ## 3. Tech Stack
 | Layer | Tech |
@@ -143,12 +142,7 @@ The “Download Ledger JSON” button produces a snapshot:
 ```
 You can re‑import manually (developer tools) or just archive it for lessons.
 
-## 11. Theming & UI/UX Notes
-- Dark mode class applied to `<html>` early to prevent flash.
-- Framer Motion for block entrance, candidate hover, pending vote transitions.
-- Hash highlight animation on last mined block (CSS keyframe pulse).
-
-## 12. Extending the Simulator
+## 11. Extending the Simulator
 Ideas:
 - Adjustable difficulty slider (throttle to avoid main‑thread jank).
 - Real signature simulation (ECDSA via noble-secp256k1) to sign votes.
@@ -157,7 +151,7 @@ Ideas:
 - REST or WebSocket replication between multiple browser tabs.
 - Time‑to‑mine statistics graph.
 
-## 13. Security Notes
+## 12. Security Notes
 This project intentionally omits critical security / correctness features:
 - No Sybil resistance or identity verification.
 - No cryptographic signatures on votes—integrity assumes trusted client.
@@ -168,10 +162,10 @@ This project intentionally omits critical security / correctness features:
 
 If adapting for any higher‑stakes scenario, you must add: authenticated identities, signed payloads, server‑side consensus, audit logging, and tamper‑evident storage.
 
-## 14. Educational Use Disclaimer
+## 13. Educational Use Disclaimer
 This software is provided **solely for learning purposes**. It does **not** implement secure, production‑grade electronic voting. Do *not* deploy or market this simulator as a trustworthy voting platform. The authors and contributors disclaim all liability for misuse or misrepresentation of its capabilities.
 
-## 15. License
+## 14. License
 © 2025 Carlos James Alanano. All Rights Reserved.
 
 This repository's source is provided for demonstration and personal educational exploration only. Redistribution, modification, sublicensing, commercial use, or public deployment requires prior written permission from the copyright holder.
@@ -191,9 +185,6 @@ Built with the React + Vite + Tailwind toolchain. Hashing powered by `crypto-js`
 | Mining seems instant | Increase difficulty in `BlockchainContext` or `blockchain.js`. |
 | Chain marked invalid | A block hash no longer matches its stored data—try restarting session. |
 | Export file empty | Ensure there is at least the genesis block; browser may block download in some sandboxed iframes. |
-| Dark mode flicker | Confirm the inline theme script is still in `index.html`. |
-
----
 
 ---
 
