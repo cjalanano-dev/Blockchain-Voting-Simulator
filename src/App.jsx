@@ -3,6 +3,7 @@ import VotingPanel from './components/VotingPanel'
 import './index.css'
 import PendingVotes from './components/PendingVotes'
 import BlockchainLedger from './components/BlockchainLedger'
+import ResultsChart from './components/ResultsChart'
 
 export default function App() {
   return (
@@ -33,8 +34,8 @@ export default function App() {
           <BlockchainLedger />
         </section>
         <section className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-6">
-          <h2 className="text-lg font-semibold mb-4">Results</h2>
-          <div className="text-sm text-neutral-500 dark:text-neutral-400">No data.</div>
+          <h2 className="text-lg font-semibold mb-6">Results</h2>
+          <ResultsChart />
         </section>
       </main>
       <footer className="py-10 text-center text-xs text-neutral-500 dark:text-neutral-500">Built for educational simulation purposes.</footer>
