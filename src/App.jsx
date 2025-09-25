@@ -27,7 +27,7 @@ export default function App() {
           </div>
           <div className="rounded-xl border border-neutral-200 bg-white/70 backdrop-blur-sm p-4 sm:p-5 flex flex-col">
             <h2 className="font-semibold mb-4">Session Stats</h2>
-            <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4 text-sm mb-6">
+            <div className="grid gap-3 lg:gap-4 text-sm mb-6" style={{gridTemplateColumns:'repeat(auto-fit,minmax(120px,1fr))'}}>
               <Stat label="Mined Blocks" value={minedBlocks} />
               <Stat label="Votes Pending" value={pendingVotes.length} />
               <Stat label="Votes Mined" value={totalVotesMined} />
@@ -72,9 +72,9 @@ export default function App() {
 
 function Stat({ label, value, accent }) {
   return (
-    <div className="flex flex-col rounded-lg border border-neutral-200 bg-white/60 backdrop-blur px-3 py-2 shadow-sm">
-      <span className="text-[10px] uppercase tracking-wide text-neutral-500">{label}</span>
-      <span className={`text-sm font-semibold mt-0.5 text-neutral-800 ${accent || ''}`}>{value}</span>
+    <div className="flex flex-col rounded-lg border border-neutral-200 bg-white/70 backdrop-blur px-3 py-2 shadow-sm h-full">
+      <span className="text-[10px] uppercase tracking-wide text-neutral-500 leading-tight" title={label}>{label}</span>
+      <span className={`text-sm font-semibold mt-1 text-neutral-800 break-all` + (accent ? ` ${accent}` : '')} title={String(value)}>{value}</span>
     </div>
   )
 }
