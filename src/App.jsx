@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import VotingPanel from './components/VotingPanel'
 import './index.css'
+import PendingVotes from './components/PendingVotes'
 
 export default function App() {
   return (
@@ -12,13 +13,18 @@ export default function App() {
           <VotingPanel />
         </section>
         <section className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-5">
-            <h2 className="font-semibold mb-2">Pending Votes</h2>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">No votes yet.</p>
+          <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-5 flex flex-col">
+            <h2 className="font-semibold mb-4">Pending & Mining</h2>
+            <PendingVotes />
           </div>
-          <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-5">
-            <h2 className="font-semibold mb-2">Mine Block</h2>
-            <button disabled className="mt-2 inline-flex items-center justify-center rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 cursor-not-allowed">Mine (disabled)</button>
+          <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-5 flex flex-col">
+            <h2 className="font-semibold mb-4">Next Features</h2>
+            <ul className="text-sm list-disc pl-4 space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>Visual ledger view</li>
+              <li>Results chart</li>
+              <li>Export ledger</li>
+            </ul>
+            <p className="mt-4 text-xs text-neutral-400 dark:text-neutral-500">(Placeholders until implemented)</p>
           </div>
         </section>
         <section className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-6">
