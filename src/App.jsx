@@ -8,7 +8,7 @@ import { useBlockchain } from './context/BlockchainContext'
 import { motion } from 'framer-motion'
 
 export default function App() {
-  const { blockchain, pendingVotes, tally, wallet, sessionActive } = useBlockchain()
+  const { blockchain, pendingVotes, tally, wallet, sessionActive, exportLedger } = useBlockchain()
   const minedBlocks = blockchain.length - 1
   const totalVotesMined = Object.values(tally).reduce((a,b) => a + b, 0)
   const leading = Object.entries(tally).sort((a,b) => b[1]-a[1])[0]
@@ -45,9 +45,14 @@ export default function App() {
               </motion.div>
             )}
             {!leading && <p className="text-xs text-neutral-500 dark:text-neutral-400">No mined votes yet.</p>}
-            <div className="mt-6 space-y-2 text-[11px] text-neutral-500 dark:text-neutral-500">
-              <p>Stats update in real time as you cast and mine votes.</p>
-              <p className="italic">Export functionality coming next.</p>
+            <div className="mt-6 flex flex-col gap-3">
+              <button onClick={exportLedger} className="inline-flex justify-center items-center gap-2 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 px-4 py-2 text-xs font-semibold shadow hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70">
+                <span>Download Ledger JSON</span>
+              </button>
+              <div className="space-y-1 text-[11px] text-neutral-500 dark:text-neutral-500">
+                <p>Stats update in real time as you cast and mine votes.</p>
+                <p className="italic">Export includes blocks, pending votes & tally snapshot.</p>
+              </div>
             </div>
           </div>
         </section>

@@ -101,6 +101,44 @@ export function BlockchainProvider({ children }) {
     setSessionActive(true)
   }, [])
 
+  const exportLedger = useCallback(() => {
+    try {
+      const data = {
+        exportedAt: new Date().toISOString(),
+        network: 'simulation',
+        difficulty,
+        sessionActive,
+        candidates,
+        chainLength: blockchain.length,
+        blocks: blockchain.map(b => ({
+          index: b.index,
+          timestamp: b.timestamp,
+            // votes are already plain objects
+          votes: b.votes,
+          previousHash: b.previousHash,
+          nonce: b.nonce,
+          hash: b.hash,
+        })),
+        pendingVotes,
+        tally,
+      }
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      const short = blockchain.length > 1 ? blockchain[blockchain.length-1].hash.slice(0,8) : 'genesis'
+      a.download = `ledger-${short}.json`
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+      return true
+    } catch (e) {
+      console.error('Export failed', e)
+      return false
+    }
+  }, [blockchain, pendingVotes, tally, candidates, difficulty, sessionActive])
+
   const tally = useMemo(() => calculateTally(blockchain.slice(1)), [blockchain])
   const chainValid = useMemo(() => isChainValid(blockchain), [blockchain])
 
@@ -121,6 +159,7 @@ export function BlockchainProvider({ children }) {
     sessionActive,
     endSession,
     resetSession,
+    exportLedger,
   }
 
   return <BlockchainContext.Provider value={value}>{children}</BlockchainContext.Provider>
