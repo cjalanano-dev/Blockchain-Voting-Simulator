@@ -1,7 +1,6 @@
 <div align="center">
 	<h1>🗳️ Blockchain Voting Simulator</h1>
 	<p><strong>Interactive educational sandbox</strong> demonstrating a simplified proof‑of‑work blockchain that records votes, with mining, chain validation, live tallies, and exportable ledger snapshots.</p>
-	<img alt="preview" src="public/favicon.svg" height="64" />
 </div>
 
 ## Table of Contents
@@ -173,7 +172,11 @@ If adapting for any higher‑stakes scenario, you must add: authenticated identi
 This software is provided **solely for learning purposes**. It does **not** implement secure, production‑grade electronic voting. Do *not* deploy or market this simulator as a trustworthy voting platform. The authors and contributors disclaim all liability for misuse or misrepresentation of its capabilities.
 
 ## 15. License
-MIT (feel free to reuse with attribution). If you extend it for workshops or curricula, a backlink is appreciated.
+© 2025 Carlos James Alanano. All Rights Reserved.
+
+This repository's source is provided for demonstration and personal educational exploration only. Redistribution, modification, sublicensing, commercial use, or public deployment requires prior written permission from the copyright holder.
+
+If you wish to adapt part of the code for open‑source purposes, contact the author to arrange a permissive re-license or contribution pathway.
 
 ---
 
@@ -191,5 +194,9 @@ Built with the React + Vite + Tailwind toolchain. Hashing powered by `crypto-js`
 | Dark mode flicker | Confirm the inline theme script is still in `index.html`. |
 
 ---
+
+---
+
+© 2025 Carlos James Alanano. All Rights Reserved.
 
 Happy experimenting! 🧪
