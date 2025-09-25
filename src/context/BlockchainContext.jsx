@@ -13,6 +13,7 @@ export function BlockchainProvider({ children }) {
   const [candidates, setCandidates] = useState(['Alice', 'Bob', 'Charlie'])
   const [wallet, setWallet] = useState(null) // {address}
   const [sessionActive, setSessionActive] = useState(true)
+  const [lastMinedHash, setLastMinedHash] = useState(null)
 
   // Load persisted state
   useEffect(() => {
@@ -67,6 +68,7 @@ export function BlockchainProvider({ children }) {
       newBlock.mineBlock(difficulty)
       setBlockchain(chain => [...chain, newBlock])
       setPendingVotes([])
+      setLastMinedHash(newBlock.hash)
       return newBlock
     } finally {
       setMining(false)
@@ -100,6 +102,10 @@ export function BlockchainProvider({ children }) {
     setPendingVotes([])
     setSessionActive(true)
   }, [])
+
+  // Derived values (declare before exportLedger so they're initialized)
+  const tally = useMemo(() => calculateTally(blockchain.slice(1)), [blockchain])
+  const chainValid = useMemo(() => isChainValid(blockchain), [blockchain])
 
   const exportLedger = useCallback(() => {
     try {
@@ -139,8 +145,6 @@ export function BlockchainProvider({ children }) {
     }
   }, [blockchain, pendingVotes, tally, candidates, difficulty, sessionActive])
 
-  const tally = useMemo(() => calculateTally(blockchain.slice(1)), [blockchain])
-  const chainValid = useMemo(() => isChainValid(blockchain), [blockchain])
 
   const value = {
     blockchain,
@@ -160,6 +164,7 @@ export function BlockchainProvider({ children }) {
     endSession,
     resetSession,
     exportLedger,
+    lastMinedHash,
   }
 
   return <BlockchainContext.Provider value={value}>{children}</BlockchainContext.Provider>
