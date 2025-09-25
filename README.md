@@ -1,6 +1,7 @@
 <div align="center">
 	<h1>🗳️ Blockchain Voting Simulator</h1>
 	<p><strong>Interactive educational sandbox</strong> demonstrating a simplified proof‑of‑work blockchain that records votes, with mining, chain validation, live tallies, and exportable ledger snapshots.</p>
+	<img src="public/sample.png" alt="BlockVote-Sim Screenshot" width="600" style="border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.12);" />
 </div>
 
 ## Table of Contents
