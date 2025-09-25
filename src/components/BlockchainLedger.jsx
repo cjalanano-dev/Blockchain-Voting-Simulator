@@ -49,9 +49,22 @@ export default function BlockchainLedger() {
                   ))}
                 </ul>
                 {idx !== blocks.length - 1 && (
-                  <div className="absolute -right-5 top-1/2 -translate-y-1/2 hidden md:block" aria-hidden>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="opacity-50">
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-400" />
+                  <div
+                    className="absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 pointer-events-none flex items-center"
+                    aria-hidden
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="opacity-50 w-5 h-5 sm:w-6 sm:h-6 text-neutral-400"
+                      fill="none"
+                    >
+                      <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </div>
                 )}
