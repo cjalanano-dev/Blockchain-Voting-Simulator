@@ -24,7 +24,7 @@ export default function VotingPanel() {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-3 mb-4">
+  <div className="flex flex-wrap gap-2 sm:gap-3 mb-4">
         {candidates.map(c => (
           <button
             key={c}
@@ -35,23 +35,23 @@ export default function VotingPanel() {
           </button>
         ))}
       </div>
-      <div className="flex flex-wrap gap-3 items-center mb-4">
+  <div className="flex flex-wrap gap-2 sm:gap-3 items-center mb-4">
         <button
           onClick={castVote}
           disabled={!wallet || !sessionActive}
-          className="inline-flex items-center rounded-lg bg-gradient-to-r from-blue-600 to-teal-500 disabled:from-neutral-400 disabled:to-neutral-500 text-white px-5 py-2.5 text-sm font-semibold shadow hover:from-blue-500 hover:to-teal-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="inline-flex flex-1 sm:flex-none justify-center items-center rounded-lg bg-gradient-to-r from-blue-600 to-teal-500 disabled:from-neutral-400 disabled:to-neutral-500 text-white px-5 py-2.5 text-sm font-semibold shadow hover:from-blue-500 hover:to-teal-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed min-w-[130px]"
         >
           Cast Vote
         </button>
         <button
           onClick={() => setEditing(e => !e)}
-          className="inline-flex items-center rounded-lg border border-neutral-300 bg-white text-neutral-700 px-4 py-2 text-sm font-medium hover:border-blue-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
+          className="inline-flex flex-1 sm:flex-none justify-center items-center rounded-lg border border-neutral-300 bg-white text-neutral-700 px-4 py-2 text-sm font-medium hover:border-blue-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60 min-w-[140px]"
         >
           {editing ? 'Cancel' : 'Edit Candidates'}
         </button>
       </div>
       {editing && (
-        <div className="space-y-2 mb-4 w-full max-w-lg">
+        <div className="space-y-2 mb-4 w-full max-w-xl">
           <textarea
             value={candidateInput}
             onChange={e => setCandidateInput(e.target.value)}
@@ -59,9 +59,9 @@ export default function VotingPanel() {
             className="w-full text-sm rounded-lg border border-neutral-300 bg-white p-2 font-mono focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60 resize-none"
             placeholder="One,Two,Three"
           />
-          <div className="flex gap-2">
-            <button onClick={saveCandidates} className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60">Save</button>
-            <button onClick={() => setEditing(false)} className="px-4 py-2 text-sm font-medium rounded-lg border border-neutral-300 bg-white text-neutral-600 hover:border-neutral-500">Close</button>
+          <div className="flex flex-wrap gap-2">
+            <button onClick={saveCandidates} className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60 flex-1 sm:flex-none min-w-[100px]">Save</button>
+            <button onClick={() => setEditing(false)} className="px-4 py-2 text-sm font-medium rounded-lg border border-neutral-300 bg-white text-neutral-600 hover:border-neutral-500 flex-1 sm:flex-none min-w-[100px]">Close</button>
           </div>
         </div>
       )}

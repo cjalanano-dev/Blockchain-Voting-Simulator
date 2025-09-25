@@ -15,7 +15,7 @@ export default function BlockchainLedger() {
         <h3 className="text-base font-semibold">Chain ({blocks.length - 1} mined blocks)</h3>
   <span className={`text-xs px-2 py-1 rounded-full font-medium ${chainValid ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>{chainValid ? 'VALID' : 'INVALID'}</span>
       </div>
-      <div className="overflow-x-auto pb-2 -mx-2 px-2">
+      <div className="overflow-x-auto pb-2 -mx-2 px-2 snap-x snap-mandatory">
         <div className="flex gap-4 min-w-max">
           <AnimatePresence initial={false}>
             {blocks.map((block, idx) => (
@@ -26,7 +26,7 @@ export default function BlockchainLedger() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                className={`relative w-72 shrink-0 rounded-xl border ${idx === 0 ? 'border-indigo-300/50 bg-indigo-50/50' : 'border-neutral-200 bg-white/70'} backdrop-blur-sm p-4 shadow-sm`}
+                className={`relative w-60 sm:w-64 md:w-72 shrink-0 snap-start rounded-xl border ${idx === 0 ? 'border-indigo-300/50 bg-indigo-50/50' : 'border-neutral-200 bg-white/70'} backdrop-blur-sm p-4 shadow-sm`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">Block</span>

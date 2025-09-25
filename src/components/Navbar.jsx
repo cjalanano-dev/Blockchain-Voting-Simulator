@@ -15,12 +15,12 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-20 backdrop-blur bg-white/90 border-b border-neutral-200 transition-colors">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-md bg-gradient-to-br from-blue-500 via-cyan-400 to-teal-400 shadow-inner" />
-          <h1 className="text-lg sm:text-xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-600">Blockchain Voting Simulation</h1>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-wrap gap-3 h-auto py-3 md:h-16 md:py-0 items-center justify-between">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="h-8 w-8 shrink-0 rounded-md bg-gradient-to-br from-blue-500 via-cyan-400 to-teal-400 shadow-inner" />
+          <h1 className="text-base xs:text-lg sm:text-xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-600 truncate max-w-[220px] sm:max-w-none" title="Blockchain Voting Simulation">Blockchain Voting Sim</h1>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-end ml-auto">
           <button onClick={handleConnect} className={`inline-flex items-center gap-2 rounded-lg border text-sm font-medium px-3 h-10 shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 ${connected ? 'border-emerald-500/30 bg-emerald-50 text-emerald-700' : 'border-neutral-300 bg-white text-neutral-700 hover:border-blue-400/60 hover:bg-blue-50'}`}>
             <Wallet className="h-4 w-4" />
             {connected ? <span className="font-mono">{address.slice(0,6)}…{address.slice(-4)}</span> : <span>Connect Wallet</span>}

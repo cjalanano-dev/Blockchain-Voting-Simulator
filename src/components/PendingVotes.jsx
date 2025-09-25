@@ -12,7 +12,7 @@ export default function PendingVotes() {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-auto space-y-2 pr-1 custom-scroll">
+      <div className="flex-1 overflow-auto space-y-2 pr-1 custom-scroll max-h-64 sm:max-h-72 md:max-h-none">
         {pendingVotes.length === 0 && (
           <p className="text-sm text-neutral-500">No votes waiting. Cast some above.</p>
         )}
