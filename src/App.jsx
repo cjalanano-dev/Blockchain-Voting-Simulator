@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import VotingPanel from './components/VotingPanel'
 import './index.css'
 import PendingVotes from './components/PendingVotes'
+import BlockchainLedger from './components/BlockchainLedger'
 
 export default function App() {
   return (
@@ -28,8 +29,8 @@ export default function App() {
           </div>
         </section>
         <section className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-6">
-          <h2 className="text-lg font-semibold mb-4">Blockchain Ledger</h2>
-          <div className="text-sm text-neutral-500 dark:text-neutral-400">No blocks yet.</div>
+          <h2 className="text-lg font-semibold mb-6">Blockchain Ledger</h2>
+          <BlockchainLedger />
         </section>
         <section className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-sm p-6">
           <h2 className="text-lg font-semibold mb-4">Results</h2>
